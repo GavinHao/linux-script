@@ -1,0 +1,107 @@
+set number
+set background=dark
+set t_Co=256
+colorscheme solarized
+
+imap <C-b> <LEFT>
+imap <C-f> <RIGHT>
+imap <M-j> <UP>
+imap <M-k> <DOWN>
+imap jk <ESC>
+
+map rw= :resize +5<CR>
+map rw- :resize -5<CR>
+map rw, :vertical resize +5<CR>
+map rw. :vertical resize -5<CR>
+
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+
+language message zh_CN.utf-8
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+
+syntax on
+
+set noeb
+set vb
+
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
+Bundle 'fatih/vim-go'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'kien/ctrlp.vim'
+Bundle 'SuperTab'
+Bundle 'mattn/emmet-vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'pangloss/vim-javascript'
+Bundle 'SirVer/ultisnips'
+Bundle 'ternjs/tern_for_vim'
+
+filetype plugin indent on
+
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
+let g:vimjs#casesensistive = 2
+let g:vimjs#smartcomplete = 1
+let g:vimjs#chromeapis = 1
+
+" set airline
+set laststatus=2
+let g:airline_theme="luna"
+let g:airline_powerline_fonts=0
+let g:airline#extensions#tavline#enabled=1
+let g:airline#extensions#wordcount#enabled=1
+
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+
+"set NERDTree
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeWinPos="right"
+let NERDTreeWinSize=30
+
+" YCM settings
+let g:ycm_key_list_select_completion = [' ', ' ']
+let g:ycm_key_list_previous_completion = [' ']
+let g:ycm_key_invoke_completion = '<C-Space>'
+
+
+" UltiSnips setting
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" ctrlp
+let g:ctrlp_map=',,'
+let g:ctrp_open_multiple_files='v'
+
+"set mapleader
+let mapleader = ","
+" vim-go custom mappings
+"au FileType go nmap ,s (go-implements)
+"au FileType go nmap ,i (go-info)
+"au FileType go nmap ,gd (go-doc)
+"au FileType go nmap ,gv (go-doc-vertical)
+"au FileType go nmap ,r (go-run)
+"au FileType go nmap ,b (go-build)
+"au FileType go nmap ,t (go-test)
+"au FileType go nmap ,c (go-coverage)
+"au FileType go nmap ,ds (go-def-split)
+"au FileType go nmap ,dv (go-def-vertical)
+"au FileType go nmap ,dt (go-def-tab)
+"au FileType go nmap ,e (go-rename)
